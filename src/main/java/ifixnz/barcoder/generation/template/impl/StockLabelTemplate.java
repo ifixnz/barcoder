@@ -24,7 +24,7 @@ public class StockLabelTemplate implements PDFTemplate {
             "<code128/>" + 
             "</barcode>";
 
-    private TemplateMetadata metadata;
+    protected TemplateMetadata metadata;
 
     public StockLabelTemplate() {
         this.metadata = new TemplateMetadata();

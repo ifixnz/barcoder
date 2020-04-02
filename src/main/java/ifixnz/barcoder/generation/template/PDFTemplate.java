@@ -19,4 +19,8 @@ public interface PDFTemplate {
                 o -> StringEscapeUtils.escapeXml(String.valueOf(o)))
                 .collect(Collectors.toList()).toArray());
     }
+
+    default boolean isPreferred() {
+        return false;
+    }
 }

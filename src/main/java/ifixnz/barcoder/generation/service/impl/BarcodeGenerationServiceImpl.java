@@ -29,6 +29,7 @@ import ifixnz.barcoder.generation.template.PDFGenerationException;
 import ifixnz.barcoder.generation.template.PDFTemplate;
 import ifixnz.barcoder.generation.template.TemplateNotFoundException;
 import ifixnz.barcoder.generation.template.impl.SimplePDFTemplate;
+import ifixnz.barcoder.generation.template.impl.StockLabelDualTemplate;
 import ifixnz.barcoder.generation.template.impl.StockLabelTemplate;
 
 @Service
@@ -43,9 +44,11 @@ public class BarcodeGenerationServiceImpl implements BarcodeGenerationService {
     public BarcodeGenerationServiceImpl() {
         SimplePDFTemplate t0 = new SimplePDFTemplate();
         StockLabelTemplate t1 = new StockLabelTemplate();
+        StockLabelDualTemplate t2 = new StockLabelDualTemplate();
         this.templates = Map.of(t0.getMetadata().getId(), t0,
-                t1.getMetadata().getId(), t1);
-        this.templateCache = List.of(t0, t1);
+                t1.getMetadata().getId(), t1,
+                t2.getMetadata().getId(), t2);
+        this.templateCache = List.of(t1, t2);
     }
 
     @PostConstruct

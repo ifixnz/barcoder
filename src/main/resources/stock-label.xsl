@@ -10,34 +10,34 @@
   <xsl:template match="barcode">
     <fo:root font-family="sans-serif" font-size="8pt">
       <fo:layout-master-set>
-        <fo:simple-page-master page-height="30mm" page-width="62mm"
+        <fo:simple-page-master page-height="30mm" page-width="88mm"
                                margin="2mm 0mm 0mm 0mm" master-name="PageMaster">
           <fo:region-body margin="0mm"/>
         </fo:simple-page-master>
       </fo:layout-master-set>
       <fo:page-sequence master-reference="PageMaster">
         <fo:flow flow-name="xsl-region-body" >
-           <fo:block text-align="center">
-             <fo:instream-foreign-object>
-               <xsl:variable name="bc" select="barcode:generate(., code)"/>
-               <svg:svg xmlns:svg="http://www.w3.org/2000/svg">
-                 <xsl:attribute name="width">
-                   <xsl:value-of select="$bc/svg:svg/@width"/>
-                 </xsl:attribute>
-                 <xsl:attribute name="height">
-                   <xsl:value-of select="$bc/svg:svg/@height"/>
-                 </xsl:attribute>
-                 <svg:rect x="5mm" y="5mm" fill="white">
-                   <xsl:attribute name="width">
-                     <xsl:value-of select="$bc/svg:svg/@width"/>
-                   </xsl:attribute>
-                   <xsl:attribute name="height">
-                     <xsl:value-of select="$bc/svg:svg/@height"/>
-                   </xsl:attribute>
-                 </svg:rect>
-                 <xsl:copy-of select="$bc"/>
-               </svg:svg>
-             </fo:instream-foreign-object>
+          <fo:block text-align="center">
+            <fo:instream-foreign-object>
+              <xsl:variable name="bc" select="barcode:generate(., code)"/>
+              <svg:svg xmlns:svg="http://www.w3.org/2000/svg">
+                <xsl:attribute name="width">
+                  <xsl:value-of select="$bc/svg:svg/@width"/>
+                </xsl:attribute>
+                <xsl:attribute name="height">
+                  <xsl:value-of select="$bc/svg:svg/@height"/>
+                </xsl:attribute>
+                <svg:rect x="5mm" y="5mm" fill="white">
+                  <xsl:attribute name="width">
+                    <xsl:value-of select="$bc/svg:svg/@width"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="height">
+                    <xsl:value-of select="$bc/svg:svg/@height"/>
+                  </xsl:attribute>
+                </svg:rect>
+                <xsl:copy-of select="$bc"/>
+              </svg:svg>
+            </fo:instream-foreign-object>
           </fo:block>
           <fo:block text-align="center">
             <xsl:value-of select="concat('Category: ', category)"/>
