@@ -25,14 +25,14 @@ public class BarcodeGenerationController {
     }
 
     // /templates
-    @GetMapping(value = "/templates")
+    @GetMapping(value = "/pdf/templates")
     public ResponseEntity<Object> listTemplates() {
         return ResponseEntity.status(HttpStatus.OK).body(this.barcodeGenerationService.availableTemplates());
     }
 
     // /barcode?t=SIMPLE&c=prodcode&description=product%20code
     // /barcode?t=STOCK&c=prodcode&description=product%20code&category=caps
-    @GetMapping(value = "/barcode", produces = {"application/pdf"})
+    @GetMapping(value = "/pdf/barcode", produces = {"application/pdf"})
     public ResponseEntity<Object> generateBarcode(@RequestParam("t") String template,
             @RequestParam("c") String barcode,
             @RequestParam Map<String, String> parameters) {

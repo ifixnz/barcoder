@@ -30,6 +30,7 @@ public class StockLabelTemplate implements PDFTemplate {
         this.metadata = new TemplateMetadata();
         this.metadata.setId("STOCK");
         this.metadata.setName("Stock Label");
+        this.metadata.setDescription("Generate one barcode in one label.");
         this.metadata.setParameterDescriptions(Map.of(
                 description, "Description for the part.",
                 category, "Category of the part."));
