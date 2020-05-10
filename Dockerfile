@@ -1,8 +1,12 @@
-FROM openjdk:12
+FROM maven:latest AS MAVEN_TOOLCHAIN
+COPY pom.xml /tmp/
+COPY Dockerfile /tmp/
+COPY src /tmp/src/
+WORKDIR /tmp/
+RUN mvn package
 
+FROM openjdk:12
 VOLUME /tmp
-ARG SERVER_PORT
-EXPOSE ${SERVER_PORT}
-ARG JAR_FILE
-ADD /target/${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+EXPOSE 8081
+COPY --from=MAVEN_TOOLCHAIN /tmp/target/*.jar /target/
+ENTRYPOINT ["java","-jar","/target/generation-service-1.0.0.jar"]
