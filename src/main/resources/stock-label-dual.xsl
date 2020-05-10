@@ -22,7 +22,7 @@
             <fo:table-column column-width="44mm"/>
             <fo:table-body>
               <fo:table-row>
-                <fo:table-cell>
+                <fo:table-cell border-right="dashed 1px black">
                   <fo:block text-align="center">
                     <fo:instream-foreign-object>
                       <xsl:variable name="bc" select="barcode:generate(., code)"/>

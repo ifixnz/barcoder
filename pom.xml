@@ -121,28 +121,6 @@
           <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>com.spotify</groupId>
-        <artifactId>dockerfile-maven-plugin</artifactId>
-        <version>1.4.12</version>
-        <executions>
-          <execution>
-            <id>default</id>
-            <goals>
-              <goal>build</goal>
-              <goal>push</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <repository>barcoder/generation-service</repository>
-          <tag>${project.version}</tag>
-          <buildArgs>
-            <SERVER_PORT>8081</SERVER_PORT>
-            <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-          </buildArgs>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
 </project>
